@@ -13,5 +13,6 @@
 
 	<modules>
 		<module>../test-util</module>
+		<module>../persistence-jpa</module>
 	</modules>
 </project>
