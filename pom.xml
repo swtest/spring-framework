@@ -6,8 +6,6 @@
 	<artifactId>swtest-parent-pom</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
-
-	<name>swtest parent POM</name>
 	<description>부모 POM. JDK 버전 및 인코딩 등을 설정한다.</description>
 
 	<properties>
