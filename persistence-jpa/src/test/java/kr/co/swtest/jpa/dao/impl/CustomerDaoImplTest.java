@@ -1,3 +1,7 @@
+/*******************************************************************************
+ * Copyright(c) 2012 SWTEST. All rights reserved.
+ * This software is the proprietary information of SWTEST.
+ *******************************************************************************/
 package kr.co.swtest.jpa.dao.impl;
 
 import static org.junit.Assert.assertEquals;
@@ -16,7 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 /**
  * CustomerLogicTest (JPA test example)
  *
- * @author <a href="mailto:davidchoi@nextree.co.kr">최영목</a>
+ * @author <a href="mailto:scroogy@swtest.co.kr">최영목</a>
  * @since 2012. 5. 19.
  */
 public class CustomerDaoImplTest extends SpringJpaDbUnitTestCase {
@@ -49,7 +53,7 @@ public class CustomerDaoImplTest extends SpringJpaDbUnitTestCase {
         assertNull(customer);
 
         // 2. 등록
-        customer = new Customer(customerId, "최영목3", "davidchoi3@nextree.co.kr");
+        customer = new Customer(customerId, "최영목3", "scroogy3@swtest.co.kr");
         this.customerDao.createCustomer(customer);
 
         // 3. 검증
@@ -63,7 +67,7 @@ public class CustomerDaoImplTest extends SpringJpaDbUnitTestCase {
         int customerId = 1;
         Customer result = this.customerDao.readCustomerById(customerId);
 
-        assertCustomer(new Customer(customerId, "최영목", "davidchoi@nextree.co.kr"), result);
+        assertCustomer(new Customer(customerId, "최영목", "scroogy@swtest.co.kr"), result);
     }
 
     /** Customer 조건조회 Test */
@@ -74,8 +78,8 @@ public class CustomerDaoImplTest extends SpringJpaDbUnitTestCase {
 
         List<Customer> customers = this.customerDao.readCustomersByCondition(condition);
         assertEquals(2, customers.size());
-        assertCustomer(new Customer(1, "최영목", "davidchoi@nextree.co.kr"), customers.get(0));
-        assertCustomer(new Customer(2, "최영목2", "davidchoi2@nextree.co.kr"), customers.get(1));
+        assertCustomer(new Customer(1, "최영목", "scroogy@swtest.co.kr"), customers.get(0));
+        assertCustomer(new Customer(2, "최영목2", "scroogy2@swtest.co.kr"), customers.get(1));
     }
 
     /** Customer 수정 Test */
@@ -84,17 +88,17 @@ public class CustomerDaoImplTest extends SpringJpaDbUnitTestCase {
         // 1. 수정 전 확인
         int customerId = 2;
         Customer customer = this.customerDao.readCustomerById(customerId);
-        assertCustomer(new Customer(customerId, "최영목2", "davidchoi2@nextree.co.kr"), customer);
+        assertCustomer(new Customer(customerId, "최영목2", "scroogy2@swtest.co.kr"), customer);
 
         // 2. 수정
         customer.setName("newName");
-        customer.setEmail("newEmail@nextree.co.kr");
+        customer.setEmail("newEmail@swtest.co.kr");
         this.customerDao.updateCustomer(customer);
 
         // 3. 검증
         Customer result = this.customerDao.readCustomerById(customerId);
         assertEquals("newName", result.getName());
-        assertEquals("newEmail@nextree.co.kr", result.getEmail());
+        assertEquals("newEmail@swtest.co.kr", result.getEmail());
     }
 
     /** Customer 삭제 Test */

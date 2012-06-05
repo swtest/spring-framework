@@ -1,3 +1,7 @@
+/*******************************************************************************
+ * Copyright(c) 2012 SWTEST. All rights reserved.
+ * This software is the proprietary information of SWTEST.
+ *******************************************************************************/
 package kr.co.swtest.jpa.dao.impl;
 
 import java.util.List;
@@ -9,15 +13,15 @@ import javax.persistence.TypedQuery;
 import kr.co.swtest.jpa.dao.CustomerDao;
 import kr.co.swtest.jpa.type.Customer;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 /**
  * CustomerLogic (JPA example)
  *
- * @author <a href="mailto:davidchoi@nextree.co.kr">최영목</a>
+ * @author <a href="mailto:scroogy@swtest.co.kr">최영목</a>
  * @since 2012. 5. 19.
  */
-@Component
+@Repository
 public class CustomerDaoImpl implements CustomerDao {
 
     @PersistenceContext
@@ -30,8 +34,7 @@ public class CustomerDaoImpl implements CustomerDao {
     public void createCustomer(Customer customer) {
         try {
             this.em.persist(customer);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             // 예외처리 필요
         }
     }
@@ -43,8 +46,7 @@ public class CustomerDaoImpl implements CustomerDao {
     public Customer readCustomerById(int customerId) {
         try {
             return this.em.find(Customer.class, customerId);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             // 예외처리 필요
             return null;
         }
@@ -70,8 +72,7 @@ public class CustomerDaoImpl implements CustomerDao {
     public void updateCustomer(Customer customer) {
         try {
             this.em.merge(customer);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             // 예외처리 필요
         }
     }
@@ -86,8 +87,7 @@ public class CustomerDaoImpl implements CustomerDao {
             if (customer == null) return;
 
             this.em.remove(customer);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             // 예외처리 필요
         }
     }

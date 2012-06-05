@@ -1,3 +1,7 @@
+/*******************************************************************************
+ * Copyright(c) 2012 SWTEST. All rights reserved.
+ * This software is the proprietary information of SWTEST.
+ *******************************************************************************/
 package kr.co.swtest.jpa.dao;
 
 import java.util.List;
@@ -7,7 +11,7 @@ import kr.co.swtest.jpa.type.Customer;
 /**
  * CustomerDao interface (JPA example)
  *
- * @author <a href="mailto:davidchoi@nextree.co.kr">최영목</a>
+ * @author <a href="mailto:scroogy@swtest.co.kr">최영목</a>
  * @since 2012. 5. 19.
  */
 public interface CustomerDao {

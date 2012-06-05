@@ -1,3 +1,7 @@
+/*******************************************************************************
+ * Copyright(c) 2012 SWTEST. All rights reserved.
+ * This software is the proprietary information of SWTEST.
+ *******************************************************************************/
 package kr.co.swtest.test.util;
 
 import javax.persistence.EntityManager;
@@ -10,7 +14,7 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 /**
  * Spring JPA Test Case with DBunit
  *
- * @author <a href="mailto:davidchoi@nextree.co.kr">최영목</a>
+ * @author <a href="mailto:scroogy@swtest.co.kr">최영목</a>
  * @since 2012. 5. 19.
  */
 @TransactionConfiguration(transactionManager = "jpaTransactionManager", defaultRollback = true)
