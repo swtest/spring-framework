@@ -21,7 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class CustomerDaoImplTest extends SpringJpaDbUnitTestCase {
 
-    /** 고객DAO 인터페이스 */
+    /** 고객DAO 인터페이스 : 테스트대상(SUT) */
     @Autowired
     private CustomerDao customerDao;
 

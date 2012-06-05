@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-	<Customer CUSTOMER_ID="1" name="최영목" email="davidchoi@nextree.co.kr"></Customer>
-	<Customer CUSTOMER_ID="2" name="최영목2" email="davidchoi2@nextree.co.kr"></Customer>
+	<customer cust_id="1" cust_nm="최영목"  cust_email="davidchoi@nextree.co.kr"></customer>
+	<customer cust_id="2" cust_nm="최영목2" cust_email="davidchoi2@nextree.co.kr"></customer>
 </dataset>
