@@ -38,6 +38,12 @@
 			<version>10.2.0.5.0</version>
 		</dependency>
 
+		<!-- mybatis는 mybatis-spring에도 포함되어 있으나 mybatis의 버전을 명시적으로 표현하기 위해서 사용함. -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>${mybatis.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
@@ -55,14 +61,9 @@
 			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-tx</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-jdbc</artifactId>
-			<version>${spring.version}</version>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>1.1.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -70,10 +71,17 @@
 			<version>${spring.version}</version>
 		</dependency>
 
+		<!-- 동일한 라이브러리의 서로 다른 버전을 참조해서 발생하는 omitted for conflict 문제를 해결하기 위해서 exclusions를
+			사용하지 않고 Dependency mediation 원칙에 따라서 명시적으로 사용할 버전을 dependency로 추가함. -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>1.6.1</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.2.1</version>
 		</dependency>
 	</dependencies>
 </project>
