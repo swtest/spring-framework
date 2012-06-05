@@ -35,6 +35,9 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.4</version>
 				<configuration>
+					<!-- javac 옵션과 동일함 -->
+					<!-- source : .class file을 컴파일하는 버전(JDK) -->
+					<!-- target : .class file이 실행될 버전(JVM) -->
 					<source>1.6</source>
 					<target>1.6</target>
 					<encoding>euc-kr</encoding>
