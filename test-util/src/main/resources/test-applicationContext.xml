@@ -9,7 +9,7 @@
 
 	<import resource="classpath:test-datasource.xml" />
 
-	<context:component-scan base-package="kr.co.swtest.test">
+	<context:component-scan base-package="kr.co.swtest">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 
