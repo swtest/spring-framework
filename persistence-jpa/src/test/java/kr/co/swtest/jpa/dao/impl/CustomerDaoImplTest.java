@@ -18,7 +18,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * CustomerLogicTest (JPA test example)
+ * CustomerDaoImplTest (JPA test example)
  *
  * @author <a href="mailto:scroogy@swtest.co.kr">√÷øµ∏Ò</a>
  * @since 2012. 5. 19.

@@ -16,7 +16,7 @@ import kr.co.swtest.jpa.type.Customer;
 import org.springframework.stereotype.Repository;
 
 /**
- * CustomerLogic (JPA example)
+ * CustomerDaoImpl (JPA example)
  *
  * @author <a href="mailto:scroogy@swtest.co.kr">√÷øµ∏Ò</a>
  * @since 2012. 5. 19.
@@ -26,6 +26,10 @@ public class CustomerDaoImpl implements CustomerDao {
 
     @PersistenceContext
     private EntityManager em;
+
+    // -------------------------------------------------------------------------
+    // Public Method
+    // -------------------------------------------------------------------------
 
     /**
      * {@inheritDoc}
