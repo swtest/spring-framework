@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="customer">
+
+	<resultMap id="customer" type="kr.co.swtest.mybatis.dto.CustomerDto">
+		<result column="cust_id" 	property="id" />
+		<result column="cust_nm" 	property="name" />
+		<result column="cust_email" property="email" />
+	</resultMap>
+	<select id="readCustomerById" parameterType="int" resultMap="customer">
+		select
+			cust_id as id
+			, cust_nm as name
+			, cust_email as email
+		from
+			customer
+		where
+			cust_id = #{id}
+	</select>
+	<select id="readCustomersByCondition" parameterType="kr.co.swtest.mybatis.dto.CustomerDto" resultMap="customer">
+		select
+			cust_id
+			, cust_nm
+			, cust_email
+		from
+			customer
+		where 1=1
+		<if test="id != null">
+			and cust_id = #{id}
+		</if>
+		<if test="name != null">
+			and cust_nm like #{name}
+		</if>
+		<if test="email != null">
+			and cust_email = #{email}
+		</if>
+		order by
+			cust_nm, cust_id
+	</select>
+
+	<insert id="createCustomer" parameterType="kr.co.swtest.mybatis.dto.CustomerDto">
+		insert into customer
+			(cust_id, cust_nm, cust_email)
+		values
+			(#{id}, #{name}, #{email})
+	</insert>
+
+	<update id="updateCustomer" parameterType="kr.co.swtest.mybatis.dto.CustomerDto">
+		update customer set
+			cust_nm = #{name}
+			, cust_email = #{email}
+		where
+			cust_id = #{id}
+	</update>
+
+	<delete id="deleteCustomerById" parameterType="int">
+		delete from customer
+		where cust_id = #{id}
+	</delete>
+
+</mapper>

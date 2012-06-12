@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<customer cust_id="1" cust_nm="최영목"  cust_email="scroogy@swtest.co.kr"></customer>
+	<customer cust_id="2" cust_nm="최영목2" cust_email="scroogy2@swtest.co.kr"></customer>
+</dataset>
