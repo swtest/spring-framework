@@ -19,6 +19,13 @@
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.use_sql_comments" value="false" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<!--
+				DB 스키마 생성 옵션
+				create : 스키마를 지우고 새로 만듭니다.
+				create-drop : create와 동일하지만 session factory가 내려갈 때 DB 스키마를 drop합니다.
+				update : 변경된 스키마를 반영합니다. (변경되지 않은 것은 유지합니다.) 일반적으로 개발시 사용합니다.
+				validate : 스키마를 변경하지 않고 현재와 같은지 확인만 합니다. 현재 JPA 구성과 DB 스키마가 다를 경우 예외를 발생시킵니다. 일반적으로 운영시 사용합니다.
+			-->
 
 			<property name="hibernate.max_fetch_depth" value="3" />
 			<property name="hibernate.jdbc.fetch_size" value="5" />
