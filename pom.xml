@@ -16,6 +16,8 @@
 		<svn.tags.dir></svn.tags.dir>
 
 		<!-- 개발표준이므로 수정하지 마세요. -->
+		<compileSource>1.6</compileSource>
+
 		<spring.version>3.1.1.RELEASE</spring.version>
 		<hibernate.version>3.6.10.Final</hibernate.version>
 		<mybatis.version>3.1.1</mybatis.version>
@@ -38,8 +40,8 @@
 					<!-- javac 옵션과 동일함 -->
 					<!-- source : .class file을 컴파일하는 버전(JDK) -->
 					<!-- target : .class file이 실행될 버전(JVM) -->
-					<source>1.6</source>
-					<target>1.6</target>
+					<source>${compileSource}</source>
+					<target>${compileSource}</target>
 					<encoding>euc-kr</encoding>
 				</configuration>
 			</plugin>
@@ -102,6 +104,16 @@
 				</configuration>
 			</plugin>
 			-->
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>2.7.1</version>
+				<configuration>
+					<targetJdk>${compileSource}</targetJdk>
+					<sourceEncoding>euc-kr</sourceEncoding>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 </project>

@@ -14,5 +14,6 @@
 	<modules>
 		<module>../test-util</module>
 		<module>../persistence-jpa</module>
+		<module>../persistence-mybatis</module>
 	</modules>
 </project>
