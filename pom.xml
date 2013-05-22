@@ -2,53 +2,67 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>kr.co.swtest</groupId>
-	<artifactId>swtest-parent-pom</artifactId>
+	<!-- Maven Coordinates (RDBMS의 복합PK로 생각하면 가장 쉬움) -->
+	<!-- parent 설정이나 dependency에 사용함 -->
+	<groupId>kr.co.swtest.spring</groupId>
+	<artifactId>spring-parent-pom</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
+
 	<description>부모 POM. JDK 버전 및 인코딩 등을 설정한다.</description>
 
+	<!-- 프로퍼티 설정 : 현재 pom.xml 및 자식 pom.xml에서 사용가능 -->
 	<properties>
-		<!-- scm branches 주소를 입력해주세요. -->
-		<scm.branches.dir></scm.branches.dir>
+		<!-- 형상관리 브랜치 URL -->
+		<scm.branches.url></scm.branches.url>
 
-		<!-- scm tags 주소를 입력해주세요. -->
-		<svn.tags.dir></svn.tags.dir>
+		<!-- 형상관리 태그(릴리즈용) URL -->
+		<svn.tags.url></svn.tags.url>
 
-		<!-- 개발표준이므로 수정하지 마세요. -->
+		<!-- 자바 컴파일 버전 -->
 		<compileSource>1.6</compileSource>
 
-		<spring.version>3.1.1.RELEASE</spring.version>
+		<!-- 스프링 프레임워크 버전 -->
+		<spring.version>3.2.3.RELEASE</spring.version>
+
+		<!-- 하이버네이트 버전 -->
 		<hibernate.version>3.6.10.Final</hibernate.version>
-		<mybatis.version>3.1.1</mybatis.version>
+
+		<!-- MyBatis 버전 -->
+		<mybatis.version>3.2.2</mybatis.version>
 	</properties>
 
+	<!-- maven을 통한 형상관리에 관한 설정. 주로 release:prepare, release:perform, release:branch 등에 사용됨. -->
+	<scm>
+		<connection>scm:git:https://github.com/swtest/spring</connection>
+	</scm>
+
+	<!-- maven을 통한 빌드에 관한 설정 -->
 	<build>
-		<extensions>
-			<extension>
-				<groupId>org.apache.maven.wagon</groupId>
-				<artifactId>wagon-webdav</artifactId>
-				<version>1.0-beta-2</version>
-			</extension>
-		</extensions>
 		<plugins>
+			<!-- java compile 설정 -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.4</version>
+				<version>3.1</version>
 				<configuration>
 					<!-- javac 옵션과 동일함 -->
 					<!-- source : .class file을 컴파일하는 버전(JDK) -->
 					<!-- target : .class file이 실행될 버전(JVM) -->
+					<!-- encoding : java 파일 인코딩 설정 -->
 					<source>${compileSource}</source>
 					<target>${compileSource}</target>
 					<encoding>euc-kr</encoding>
 				</configuration>
 			</plugin>
+
+			<!-- .class가 아닌 .java파일이 들어있는 소스.jar를 생성하기 위한 설정 -->
+			<!-- 이 설정으로 .class파일을 열더라도 소스를 볼 수 있음 -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
-				<version>2.1.2</version>
+				<version>2.2.1</version>
+				<!-- jar maven goal이 실행될 때 소스.jar를 생성하도록 설정 -->
 				<executions>
 					<execution>
 						<id>attach-sources</id>
@@ -58,31 +72,43 @@
 					</execution>
 				</executions>
 			</plugin>
+
+			<!-- 리소스 설정 -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.5</version>
+				<version>2.6</version>
 				<configuration>
+					<!-- 리소스 인코딩 설정 -->
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
+
+			<!-- java test 설정 -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.12</version>
+				<version>2.14.1</version>
+				<!-- 자식 pom.xml에 아래 옵션이 상속되게 할 것인지 설정 -->
 				<inherited>true</inherited>
 				<configuration>
+					<!-- 각 테스트마다 남길 수 있도록 설정 -->
 					<forkMode>always</forkMode>
+					<!-- xml형식으로 reporting함 (jenkins와 같은 CI도구 등에서 활용) -->
 					<reportFormat>xml</reportFormat>
 				</configuration>
 			</plugin>
+
+			<!-- javadoc 설정 -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.8.1</version>
+				<version>2.9</version>
 				<configuration>
+					<!-- 한글에 유의할 것. -->
 					<encoding>euc-kr</encoding>
 				</configuration>
+				<!-- jar maven goal이 실행될 때 javadoc.jar를 생성하도록 설정 -->
 				<executions>
 					<execution>
 						<id>attach-javadocs</id>
@@ -92,23 +118,37 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!--
+
+			<!-- 브랜치 및 릴리즈 설정 -->
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
-				<version>2.3</version>
+				<version>2.4.1</version>
 				<configuration>
-					<branchBase>${scm.branches.dir}</branchBase>
-					<tagBase>${scm.tags.dir}</tagBase>
+					<!-- 형상관리 branches root url -->
+					<branchBase>${scm.branches.url}</branchBase>
+					<!-- branch 작업시 maven version을 업데이트할 것인지 설정 -->
+					<updateBranchVersions>true</updateBranchVersions>
+
+					<!-- 형상관리 tags root url -->
+					<tagBase>${scm.tags.url}</tagBase>
+					<!-- tags명 포맷 -->
+					<tagNameFormat>{project.version}</tagNameFormat>
+
+					<!-- 하위 모듈 버전을 자동으로 설정 : 부모pom과 동일하게 설정 -->
 					<autoVersionSubmodules>true</autoVersionSubmodules>
-					<goal>deploy</goal>
+					<!-- release:prepare 이후 실행할 goal -->
+					<completionGoals>deploy</completionGoals>
+					<!-- release:preform 실행할 goal -->
+					<goals>deploy</goals>
 				</configuration>
 			</plugin>
-			-->
 
+			<!-- PMD 설정 -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
-				<version>2.7.1</version>
+				<version>3.0.1</version>
 				<configuration>
 					<targetJdk>${compileSource}</targetJdk>
 					<sourceEncoding>euc-kr</sourceEncoding>

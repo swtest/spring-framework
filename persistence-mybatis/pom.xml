@@ -2,12 +2,14 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>kr.co.swtest</groupId>
-		<artifactId>swtest-parent-pom</artifactId>
+		<groupId>kr.co.swtest.spring</groupId>
+		<artifactId>spring-parent-pom</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
+	<groupId>kr.co.swtest.spring</groupId>
 	<artifactId>persistence-mybatis</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
 	<description>엔티티 컴포넌트에서 MyBatis를 쉽게 사용할 수 있도록 도와주는 컴포넌트이다.</description>
 
 	<dependencies>
@@ -20,7 +22,7 @@
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
-			<version>1.1.1</version>
+			<version>1.2.0</version>
 		</dependency>
 
 		<dependency>

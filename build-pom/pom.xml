@@ -2,12 +2,14 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>kr.co.swtest</groupId>
-		<artifactId>swtest-parent-pom</artifactId>
+		<groupId>kr.co.swtest.spring</groupId>
+		<artifactId>spring-parent-pom</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
+	<groupId>kr.co.swtest.spring</groupId>
 	<artifactId>build-pom</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<description>전체 빌드를 담당하는 컴포넌트이다. 부모 POM을 제외한 모든 컴포넌트를 빌드한다.</description>
 
